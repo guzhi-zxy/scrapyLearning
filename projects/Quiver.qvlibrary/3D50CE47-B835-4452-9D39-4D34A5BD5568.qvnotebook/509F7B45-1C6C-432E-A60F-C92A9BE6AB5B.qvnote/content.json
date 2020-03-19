@@ -1,0 +1,9 @@
+{
+  "title": "python 测试性能装饰器",
+  "cells": [
+    {
+      "type": "markdown",
+      "data": "import time\nfrom functools import wraps\n\ndef timeit(func):\n    @wraps(func)\n    def wrapper(*args, **kwargs):\n        start = time.time_ns()\n        ret = func(*args, **kwargs)\n        end = time.time_ns()\n        print('used:',end-start)\n        return ret\n    return wrapper\n\n\n@timeit\ndef foo():\n    print('in foo()'foo())\n"
+    }
+  ]
+}

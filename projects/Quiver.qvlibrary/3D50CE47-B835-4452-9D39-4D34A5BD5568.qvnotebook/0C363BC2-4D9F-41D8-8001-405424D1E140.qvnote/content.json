@@ -1,0 +1,9 @@
+{
+  "title": "Logging",
+  "cells": [
+    {
+      "type": "text",
+      "data": "<div>import logging</div><div><br></div><div><br></div><div>def log(message):</div><div>&nbsp; &nbsp; logger = logging.getLogger('testlog')</div><div><br></div><div>&nbsp; &nbsp; # &nbsp;这里进行判断，如果logger.handlers列表为空，则添加，否则，直接去写日志</div><div>&nbsp; &nbsp; if not logger.handlers:</div><div>&nbsp; &nbsp; &nbsp; &nbsp; streamhandler = logging.StreamHandler()</div><div>&nbsp; &nbsp; &nbsp; &nbsp; streamhandler.setLevel(logging.ERROR)</div><div>&nbsp; &nbsp; &nbsp; &nbsp; formatter = logging.Formatter('%(asctime)s - %(levelname)s - %(name)s - %(message)s')</div><div>&nbsp; &nbsp; &nbsp; &nbsp; streamhandler.setFormatter(formatter)</div><div>&nbsp; &nbsp; &nbsp; &nbsp; logger.addHandler(streamhandler)</div><div><br></div><div>&nbsp; &nbsp; logger.error(message)</div><div><br></div><div><br></div><div>if __name__ == '__main__':</div><div>&nbsp; &nbsp; log('hi')</div><div>&nbsp; &nbsp; log('hi too')</div><div>&nbsp; &nbsp; log('hi three')</div><div><br></div>"
+    }
+  ]
+}

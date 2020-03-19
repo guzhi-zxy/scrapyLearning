@@ -1,0 +1,13 @@
+{
+  "title": "python3 编码问题",
+  "cells": [
+    {
+      "type": "text",
+      "data": "<span style=\"font-size: 17px;\">&amp;quot;area&amp;quot;:&amp;quot;&amp;#19978;&amp;#28023;&amp;quot;, 转中文</span>"
+    },
+    {
+      "type": "text",
+      "data": "<pre style=\"background-color:#272822;color:#f8f8f2;font-family:'Menlo';font-size:13.5pt;\"><span style=\"color:#66d9ef;font-style:italic;\">from </span>html <span style=\"color:#66d9ef;font-style:italic;\">import </span>unescape<br><span style=\"color:#66d9ef;\">print</span>(<span style=\"color:#66d9ef;\">unescape</span>(response.text))</pre>"
+    }
+  ]
+}

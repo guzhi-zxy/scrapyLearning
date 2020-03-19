@@ -1,0 +1,9 @@
+{
+  "title": "python unicode转中文",
+  "cells": [
+    {
+      "type": "text",
+      "data": "<span style=\"color: rgb(79, 79, 79); font-family: &quot;Source Code Pro&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Ubuntu Mono&quot;, &quot;Anonymous Pro&quot;, &quot;Droid Sans Mono&quot;, Menlo, Monaco, Consolas, Inconsolata, Courier, monospace, &quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, sans-serif; font-size: 14px; font-variant-ligatures: common-ligatures; orphans: 2; white-space: pre; widows: 2; background-color: rgb(246, 248, 250);\">.decode(</span><span class=\"hljs-string\" style=\"box-sizing: border-box; outline: 0px; font-family: &quot;Microsoft YaHei&quot;, &quot;SF Pro Display&quot;, Roboto, Noto, Arial, &quot;PingFang SC&quot;, sans-serif; font-size: 14px; overflow-wrap: break-word; font-variant-ligatures: common-ligatures; orphans: 2; white-space: pre; widows: 2; color: rgb(0, 153, 0) !important;\">\"unicode-escape\"</span><span style=\"color: rgb(79, 79, 79); font-family: &quot;Source Code Pro&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Ubuntu Mono&quot;, &quot;Anonymous Pro&quot;, &quot;Droid Sans Mono&quot;, Menlo, Monaco, Consolas, Inconsolata, Courier, monospace, &quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, sans-serif; font-size: 14px; font-variant-ligatures: common-ligatures; orphans: 2; white-space: pre; widows: 2; background-color: rgb(246, 248, 250);\">)</span>"
+    }
+  ]
+}

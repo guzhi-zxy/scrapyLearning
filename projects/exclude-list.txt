@@ -1,0 +1,7 @@
+.gitignore
+.gitlab-ci.yml
+.git
+README.md
+exclude-list-dev.txt
+exclude-list.txt
+.test

@@ -1,0 +1,9 @@
+{
+  "title": "Mongo新建分片",
+  "cells": [
+    {
+      "type": "text",
+      "data": "<p style=\"margin: 0px; font-stretch: normal; font-size: 12px; line-height: normal; font-family: &quot;Helvetica Neue&quot;;\">mongo s-2zec759e8cc4b6b4.mongodb.rds.aliyuncs.com:3717</p>\n<p style=\"margin: 0px; font-stretch: normal; font-size: 12px; line-height: normal; font-family: &quot;Helvetica Neue&quot;;\">use admin</p>\n<p style=\"margin: 0px; font-stretch: normal; font-size: 12px; line-height: normal; font-family: &quot;Helvetica Neue&quot;;\">db.auth<span style=\"font-stretch: normal; line-height: normal; font-family: &quot;.PingFang SC&quot;;\">(</span>'root'<span style=\"font-stretch: normal; line-height: normal; font-family: &quot;.PingFang SC&quot;;\">,</span> '2xNysUrkyJcw3Qns'<span style=\"font-stretch: normal; line-height: normal; font-family: &quot;.PingFang SC&quot;;\">)</span></p>\n<p style=\"margin: 0px; font-stretch: normal; font-size: 12px; line-height: normal; font-family: &quot;.PingFang SC&quot;;\"><br></p><div><br></div><div><div><span style=\"font-family: &quot;.PingFang SC&quot;; font-size: 12px;\">分片</span><span style=\"font-size: 12px; font-stretch: normal; line-height: normal; font-family: &quot;Helvetica Neue&quot;;\">:</span><br></div><font face=\"Helvetica Neue\"><span style=\"font-size: 12px;\">db.runCommand({enablesharding: \"flowData”})</span></font><div><span style=\"font-family: &quot;Helvetica Neue&quot;; font-size: 12px;\">db.runCommand({shardcollection:\"flowData.rank_item\",key:{\"item_id\": 1}})</span></div></div>"
+    }
+  ]
+}

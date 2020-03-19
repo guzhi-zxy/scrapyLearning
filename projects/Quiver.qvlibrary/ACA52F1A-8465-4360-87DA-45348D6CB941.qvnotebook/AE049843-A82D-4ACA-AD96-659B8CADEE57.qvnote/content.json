@@ -1,0 +1,9 @@
+{
+  "title": "Q4 plan",
+  "cells": [
+    {
+      "type": "text",
+      "data": "<div>架构：</div><div><br></div><div>任务统计 scrapy</div><div><br></div><div>代理资源管理</div><div><br></div><div>scrapy调度</div><div><br></div><div>入库error日志收集</div><div><br></div><div>账号cookies池</div><div><br></div><div>滑块</div><div><br></div><div>业务：</div><div><br></div><div>比价</div><div><br></div><div>KA</div><div><br></div><div>jd、pdd</div><div><br></div><div>任务调度</div><div><br></div><div>cookies池</div><div><br></div><div>日志统一收集</div><div><br></div><div>通用中间件扩展（统计、uA、proxy）</div>"
+    }
+  ]
+}

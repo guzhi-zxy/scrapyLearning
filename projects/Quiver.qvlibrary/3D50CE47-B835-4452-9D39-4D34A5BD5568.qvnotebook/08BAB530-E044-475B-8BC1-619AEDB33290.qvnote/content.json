@@ -1,0 +1,17 @@
+{
+  "title": "python实现单例",
+  "cells": [
+    {
+      "type": "markdown",
+      "data": "第一种方法:使用装饰器\n\ndef singleton(cls):\n    instances = {}\n    def wrapper(*args, **kwargs):\n        if cls not in instances:\n            instances[cls] = cls(*args, **kwargs)\n        return instances[cls]\n    return wrapper\n\n\n@singleton\nclass Foo(object):\n    pass\nfoo1 = Foo()\nfoo2 = Foo()\nprint(foo1 is foo2)  # True\n\n"
+    },
+    {
+      "type": "text",
+      "data": "<div><p>第二种方法：使用基类\nNew 是真正创建实例对象的方法，所以重写基类的new 方法，以此保证创建对象的时候只生成一个实例</p>\n<pre><code class=\"hljs python copyable\" lang=\"python\"><span class=\"hljs-class\"><span class=\"hljs-keyword\">class</span> <span class=\"hljs-title\">Singleton</span><span class=\"hljs-params\">(object)</span>:</span>\n    <span class=\"hljs-function\"><span class=\"hljs-keyword\">def</span> <span class=\"hljs-title\">__new__</span><span class=\"hljs-params\">(cls, *args, **kwargs)</span>:</span>\n        <span class=\"hljs-keyword\">if</span> <span class=\"hljs-keyword\">not</span> hasattr(cls, <span class=\"hljs-string\">'_instance'</span>):\n            cls._instance = super(Singleton, cls).__new__(cls, *args, **kwargs)\n        <span class=\"hljs-keyword\">return</span> cls._instance\n\n\n<span class=\"hljs-class\"><span class=\"hljs-keyword\">class</span> <span class=\"hljs-title\">Foo</span><span class=\"hljs-params\">(Singleton)</span>:</span>\n    <span class=\"hljs-keyword\">pass</span>\n\nfoo1 = Foo()\nfoo2 = Foo()\n\nprint(foo1 <span class=\"hljs-keyword\">is</span> foo2)  <span class=\"hljs-comment\"># True</span></code></pre></div><br>"
+    },
+    {
+      "type": "text",
+      "data": "<div><p>第三种方法：元类，元类是用于创建类对象的类，类对象创建实例对象时一定要调用call方法，因此在调用call时候保证始终只创建一个实例即可，type是python的元类</p>\n<pre><code class=\"hljs python copyable\" lang=\"python\"><span class=\"hljs-class\"><span class=\"hljs-keyword\">class</span> <span class=\"hljs-title\">Singleton</span><span class=\"hljs-params\">(type)</span>:</span>\n    <span class=\"hljs-function\"><span class=\"hljs-keyword\">def</span> <span class=\"hljs-title\">__call__</span><span class=\"hljs-params\">(cls, *args, **kwargs)</span>:</span>\n        <span class=\"hljs-keyword\">if</span> <span class=\"hljs-keyword\">not</span> hasattr(cls, <span class=\"hljs-string\">'_instance'</span>):\n            cls._instance = super(Singleton, cls).__call__(*args, **kwargs)\n        <span class=\"hljs-keyword\">return</span> cls._instance\n\n\n<span class=\"hljs-comment\"># Python2</span>\n<span class=\"hljs-class\"><span class=\"hljs-keyword\">class</span> <span class=\"hljs-title\">Foo</span><span class=\"hljs-params\">(object)</span>:</span>\n    __metaclass__ = Singleton\n\n<span class=\"hljs-comment\"># Python3</span>\n<span class=\"hljs-class\"><span class=\"hljs-keyword\">class</span> <span class=\"hljs-title\">Foo</span><span class=\"hljs-params\">(metaclass=Singleton)</span>:</span>\n    <span class=\"hljs-keyword\">pass</span>\n\nfoo1 = Foo()\nfoo2 = Foo()\nprint(foo1 <span class=\"hljs-keyword\">is</span> foo2)  <span class=\"hljs-comment\"># True</span></code></pre></div><br>"
+    }
+  ]
+}

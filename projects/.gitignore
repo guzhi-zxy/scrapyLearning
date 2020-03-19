@@ -1,0 +1,12 @@
+.idea/
+*.log
+*.pyc
+logs
+.vscode/
+*.cpython-37.pyc
+*.pot
+*/*/*/__pycache__/
+*/*/*/*/__pycache__/
+*/*/__pycache__/
+*/__pycache__/
+
