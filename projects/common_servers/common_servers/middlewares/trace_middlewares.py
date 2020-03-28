@@ -11,6 +11,30 @@
 trace_id跟踪
 
 目的: 生成新的trace_id, 如果有trace_id直接使用
+
+
+Fluent相关
+
+注意:
+- 日志文件所在目录用户必须是td-agnet, 否则会提示无权限
+
+# 安装
+curl -L https://toolbelt.treasuredata.com/sh/install-redhat-td-agent3.sh | sh 
+ 
+# 安装mongo插件
+td-agent-gem install fluent-plugin-mongo
+ 
+ 
+# 服务器配置地址: /etc/td-agent/config.d
+ 
+ 
+# td-agent日志(可以排查错误): /var/log/td-agent/td-agent.log
+ 
+ 
+# 常用命令
+/etc/init.d/td-agent restart
+/etc/init.d/td-agent stop
+
 '''
 
 import uuid
