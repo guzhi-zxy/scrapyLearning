@@ -9,9 +9,14 @@
 from urllib.parse import quote
 
 
-def _encode_url(url: str, data: tuple) -> str:
+def _encode_url(url: str, data) -> str:
+    '''
+    :param url:
+    :param data: 支持元祖 字典
+    :return:
+    '''
     result = []
-    to_list = list(data)
+    to_list = list(data.items()) if type(data) == dict else list(data)
     for k, vs in to_list:
         if isinstance(vs, (str, bytes)) or not hasattr(vs, '__iter__'):
             vs = [vs]
