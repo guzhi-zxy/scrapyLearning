@@ -16,6 +16,12 @@ yield scrapy.Request(
 import sys
 import base64
 import random
+from txsocksx.http import SOCKS5Agent
+from twisted.internet import reactor
+from twisted.internet.endpoints import TCP4ClientEndpoint
+from scrapy.core.downloader.webclient import _parse
+from scrapy.core.downloader.handlers.http11 import HTTP11DownloadHandler, ScrapyAgent
+
 from lib.log import get_influx_logger
 from conf import PROJECT_NAME
 
@@ -100,3 +106,44 @@ class Proxy16Middleware(object):
             if response.status == 429:
                 return request
         return response
+
+
+proxyHost = "socks-cla.abuyun.com"
+proxyPort = 1234
+proxyUser = "S92IXXXXX2731G8C"
+proxyPass = "D7650BABD8BXXXXX"
+
+
+class Socks5DownloadHandler(HTTP11DownloadHandler):
+    """
+    socks代理中间件
+    DOWNLOAD_HANDLERS 配置socks代理
+    DOWNLOAD_HANDLERS = {
+        "http": "spider.middlewares.Socks5DownloadHandler",
+        "https": "spider.middlewares.Socks5DownloadHandler",
+    }
+    """
+
+    def download_request(self, request, spider):
+        """Return a deferred for the HTTP download"""
+        agent = ScrapySocks5Agent(contextFactory=self._contextFactory, pool=self._pool)
+        return agent.download_request(request)
+
+
+class ScrapySocks5Agent(ScrapyAgent):
+
+    def _get_agent(self, request, timeout):
+        # bindAddress = request.meta.get('bindaddress') or self._bindAddress
+        # proxy = request.meta.get('proxy')
+        # if proxy:
+            # _, _, proxyHost, proxyPort, proxyParams = _parse(proxy)
+            # _, _, host, port, proxyParams = _parse(request.url)
+        torServerEndpoint = TCP4ClientEndpoint(reactor, proxyHost, proxyPort)
+        # proxyEndpoint = SOCKS5ClientEndpoint(proxyHost, proxyPort,proxyEndpoint=torServerEndpoint, methods={'login': (proxyUser, proxyPass)})
+
+        agent = SOCKS5Agent(reactor, proxyEndpoint=torServerEndpoint,
+                            endpointArgs=dict(methods={'login': (proxyUser, proxyPass)}))
+
+        return agent
+        # return self._Agent(reactor, contextFactory=self._contextFactory,
+        # connectTimeout=timeout, bindAddress=bindAddress, pool=self._pool)
