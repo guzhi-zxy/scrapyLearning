@@ -7,12 +7,10 @@
 @projectExplain: 配置
 """
 import os
-import copy
-from redis import StrictRedis
-from pymongo import MongoClient
+
 from dynaconf import settings as dynaconf_settings
 
-from config.consul_config import ConsulConfig
+from common_servers.config.consul_config import ConsulConfig
 
 PROJECT_NAME = ''
 
@@ -29,7 +27,9 @@ elif ENV == ENV_DEV:
 else:
     consul_keys = [f'config/spider/{PROJECT_NAME},prod/data']
 
-settings = ConsulConfig(consul_keys, watch=True)
+consul_settings = ConsulConfig(consul_keys, watch=True)
 
-LOG_DIR = os.path.join(settings.LOG_DIR, PROJECT_NAME)
-LOG_LEVEL = settings.LOG_LEVEL
+LOG_DIR = os.path.join(consul_settings.LOG_DIR, PROJECT_NAME)
+LOG_LEVEL = consul_settings.LOG_LEVEL
+
+MYSQL_READ_PRODUCT = consul_settings.mysql['product']
