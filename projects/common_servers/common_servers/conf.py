@@ -8,6 +8,7 @@
 """
 import os
 
+from pymongo import MongoClient
 from dynaconf import settings as dynaconf_settings
 
 from common_servers.config.consul_config import ConsulConfig
@@ -33,3 +34,15 @@ LOG_DIR = os.path.join(consul_settings.LOG_DIR, PROJECT_NAME)
 LOG_LEVEL = consul_settings.LOG_LEVEL
 
 MYSQL_READ_PRODUCT = consul_settings.mysql['product']
+
+
+def connect_low_mongo(config: dict = consul_settings.mongodb['mongo']):
+    '''
+    自建mongodb低配置集群
+    :param config:
+    :return:
+    '''
+    mongo_client = MongoClient(config['ips'])
+    if config['user']:
+        mongo_client.admin.authenticate(config['user'], config['password'])
+    return mongo_client
